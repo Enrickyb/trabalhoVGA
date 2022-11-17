@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Link from 'next/link'
 import { Main } from '../src/components/Main'
 const Home: NextPage = () => {
   return (
@@ -11,10 +10,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
   
-      <h1>Bem vindo ao verificador de Paralelismo e Ortogonalidade entre dois vetores</h1>
-      <Link href={"/main"}>
-      <button>COMEÇAR!</button>
-      </Link>
+      <Main></Main>
       
     </div>
   )
