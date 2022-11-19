@@ -17,8 +17,8 @@ export const Main = () => {
   //Cordenada Z
   const [posz1, setPosz1] = useState<number>(null);
   const [posz2, setPosz2] = useState<number>(null);
-  
-  function clearAll(){
+
+  function clearAll() {
     setPosx1(null);
     setPosx2(null);
     setPosy1(null);
@@ -67,11 +67,12 @@ export const Main = () => {
   ) {
     let resultx = x1 / x2;
     let resulty = y1 / y2;
+    let result = x1 * x2 + y1 * y2 + z1 * z2;
 
     if (r3 == true) {
       let resultz = z1 / z2;
 
-      if (resultx === resulty && resulty === resultz) {
+      if (resultx === resulty && resulty === resultz && result !== 0) {
         console.log("É paralelo");
         setParalelo(true);
       } else {
@@ -79,7 +80,7 @@ export const Main = () => {
         console.log("Não é paralelo");
       }
     } else {
-      if (resultx == resulty) {
+      if (resultx == resulty && result !== 0) {
         console.log("É paralelo");
         setParalelo(true);
       } else {
@@ -90,106 +91,123 @@ export const Main = () => {
   }
 
   return (
-    <S.Main>
-      <S.Title>Vetores Paralelos e Ortogonais</S.Title>
-      <button
-        onClick={() => {
-          setR3(!r3);
-        }}
-      >
-        {r3 ? "2D" : "3D"}
-      </button>
-      <S.Forms>
-        <p>U: </p>
-        (
-        <input
-          type="number"
-          onChange={(event) => {
-            setPosx1(Number(event.target.value));
-          }}
-        />
-        ,
-        <input
-          type="number"
-          onChange={(event) => {
-            setPosy1(Number(event.target.value));
-          }}
-        />
-        {r3 ? (
-          <div>
-            ,
-            <input
-              type="number"
-              onChange={(event) => {
-                setPosz1(Number(event.target.value));
-              }}
-            />
-          </div>
-        ) : null}
-        )<p>V: </p>
-        (
-        <input
-          type="number"
-          onChange={(event) => {
-            setPosx2(Number(event.target.value));
-          }}
-        />
-        ,
-        <input
-          type="number"
-          onChange={(event) => {
-            setPosy2(Number(event.target.value));
-          }}
-        />
-        {r3 ? (
-          <div>
-            ,
-            <input
-              type="number"
-              onChange={(event) => {
-                setPosz2(Number(event.target.value));
-              }}
-            />
-          </div>
-        ) : null}
-        )
-        <button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            submit();
-            paralelos(posx1, posy1, posx2, posy2, posz1, posz2);
-            ortogonais(posx1, posy1, posx2, posy2, posz1, posz2);
-            
-          }}
-        >
-          Verificar
-        </button>
-        <button onClick={
-          ()=>{
-            clearAll();
-          }
-        }>Limpar</button>
-      </S.Forms>
-      {submited ? (
-        <div>
-          <div>
-            {paralelo ? (
-              <p>Os vetores são Paralelos</p>
-            ) : (
-              <p>Os vetores não são Paralelos</p>
-            )}
-          </div>
+    <S.Wrapper>
+      <S.Main>
+        <S.Title>
+          Verificador de Paralelismo e Ortogonalidade entre vetores
+        </S.Title>
 
-          <div>
-            {isOrtogonal ? (
-              <p>Os vetores são Ortogonais</p>
-            ) : (
-              <p>Os vetores não são Ortogonais</p>
-            )}
-          </div>
-        </div>
-      ) : null}
-    </S.Main>
+        <S.formsWrapper>
+          <button
+            onClick={() => {
+              setR3(!r3);
+            }}
+          >
+            {r3 ? "2D" : "3D"}
+          </button>
+          <S.Forms>
+            <p>U: </p>
+            (
+            <input
+              type="number"
+              onChange={(event) => {
+                setPosx1(Number(event.target.value));
+              }}
+              placeholder="x"
+            />
+            ,
+            <input
+              type="number"
+              onChange={(event) => {
+                setPosy1(Number(event.target.value));
+              }}
+              placeholder="y"
+            />
+            {r3 ? (
+              <div>
+                ,
+                <input
+                  type="number"
+                  onChange={(event) => {
+                    setPosz1(Number(event.target.value));
+                  }}
+                  placeholder="z"
+                />
+              </div>):null}
+            )<p>V: </p>
+            (
+            <input
+              type="number"
+              onChange={(event) => {
+                setPosx2(Number(event.target.value));
+              }}
+              placeholder="x"
+            />
+            ,
+            <input
+              type="number"
+              onChange={(event) => {
+                setPosy2(Number(event.target.value));
+              }}
+              placeholder="y"
+            />
+            {r3 ? (
+              <div>
+                ,
+                <input
+                  type="number"
+                  onChange={(event) => {
+                    setPosz2(Number(event.target.value));
+                  }}
+                  placeholder="z"
+                />
+              </div>
+            ) : null}
+            )
+          </S.Forms>
+          <S.Buttons>
+            <button
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                submit();
+                paralelos(posx1, posy1, posx2, posy2, posz1, posz2);
+                ortogonais(posx1, posy1, posx2, posy2, posz1, posz2);
+              }}
+            >
+              VERIFICAR
+            </button>
+            <button
+              onClick={() => {
+                clearAll();
+              }}
+            >
+              LIMPAR
+            </button>
+          </S.Buttons>
+        </S.formsWrapper>
+        <S.Results>
+          {submited ? (
+            <div>
+              <div>
+                {paralelo ? (
+                  <p>Os vetores são Paralelos</p>
+                ) : (
+                  <p>Os vetores não são Paralelos</p>
+                )}
+              </div>
+              <div>
+                {isOrtogonal ? (
+                  <p>Os vetores são Ortogonais</p>
+                ) : (
+                  <p>Os vetores não são Ortogonais</p>
+                )}
+              </div>
+            </div>
+          ) : null}
+        </S.Results>
+      </S.Main>
+      <img src="/mainimage.png" alt="mainimage" />
+    </S.Wrapper>
   );
 };
