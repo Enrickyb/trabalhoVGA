@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { Title } from "../Main/Style";
 import * as S from "./style";
 
 const Index = () => {
@@ -14,11 +15,14 @@ const Index = () => {
 
       <S.index>
         <div>
-          <h1>Verificador de Paralelismo e Ortogonalidade entre vetores</h1>
+          <Title>
+            Verificador de Paralelismo e Ortogonalidade entre vetores
+          </Title>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation.
+            Vetores são paralelos quando a divisão de suas cordenadas são iguais.
+          </p>
+          <p>
+            Vetores são ortogonais quando o produto escalar entre eles é igual a 0 (zero).
           </p>
           <Link href={"/main"}>
             <button>COMEÇAR</button>

@@ -98,6 +98,10 @@ const Buttons = styled.div`
       background-color: #0318d3;
       color: white;
     }
+    
+  }
+  @media (max-width: 500px) {
+    margin-right: 20px;
   }
 `;
 const formsWrapper = styled.div`
