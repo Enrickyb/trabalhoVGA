@@ -46,17 +46,14 @@ export const Main = () => {
     z1: number | null,
     z2: number | null
   ) {
-    let result = x1 * x2 + y1 * y2 + z1 * z2;
-
+    let result = (x1 * x2) + (y1 * y2) + (z1 * z2);
+    
     if (result == 0) {
-      console.log("É ortogonal, pois o produto escalar dos vetores é 0");
       setIsOrtogonal(true);
     } else {
-      console.log("Não é ortogonal");
       setIsOrtogonal(false);
     }
   }
-
   function paralelos(
     x1: number,
     y1: number,
@@ -71,21 +68,17 @@ export const Main = () => {
 
     if (r3 == true) {
       let resultz = z1 / z2;
-
       if (resultx === resulty && resulty === resultz && result !== 0) {
         console.log("É paralelo");
         setParalelo(true);
       } else {
         setParalelo(false);
-        console.log("Não é paralelo");
       }
     } else {
       if (resultx == resulty && result !== 0) {
-        console.log("É paralelo");
         setParalelo(true);
       } else {
         setParalelo(false);
-        console.log("Não é paralelo");
       }
     }
   }
