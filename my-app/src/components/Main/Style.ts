@@ -27,7 +27,6 @@ const Main = styled.div`
   flex-direction: column;
   align-items: start;
   width: 100vw;
-  
 `;
 const Results = styled.div`
   margin-left: 55px;
@@ -98,7 +97,6 @@ const Buttons = styled.div`
       background-color: #0318d3;
       color: white;
     }
-    
   }
   @media (max-width: 500px) {
     margin-right: 20px;

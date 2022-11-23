@@ -46,8 +46,8 @@ export const Main = () => {
     z1: number | null,
     z2: number | null
   ) {
-    let result = (x1 * x2) + (y1 * y2) + (z1 * z2);
-    
+    let result = x1 * x2 + y1 * y2 + z1 * z2;
+
     if (result == 0) {
       setIsOrtogonal(true);
     } else {
@@ -91,13 +91,15 @@ export const Main = () => {
         </S.Title>
 
         <S.formsWrapper>
-          <button
-            onClick={() => {
-              setR3(!r3);
-            }}
-          >
-            {r3 ? "2D" : "3D"}
-          </button>
+          <abbr title="Mudar a dimensão de 2D para 3D ou vice e versa.">
+            <button
+              onClick={() => {
+                setR3(!r3);
+              }}
+            >
+              {r3 ? "2D" : "3D"}
+            </button>
+          </abbr>
           <S.Forms>
             <p>U: </p>
             (
@@ -126,7 +128,8 @@ export const Main = () => {
                   }}
                   placeholder="z"
                 />
-              </div>):null}
+              </div>
+            ) : null}
             )<p>V: </p>
             (
             <input
