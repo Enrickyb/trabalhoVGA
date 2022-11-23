@@ -6,8 +6,14 @@ const index = styled.div`
   justify-content: start;
   align-items: baseline;
   margin-left: 75px;
-  position: relative;
  
+  img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+  }
+
   div {
     width: 50vw;
 
@@ -29,12 +35,7 @@ const index = styled.div`
       margin-bottom: 50px;
     }
   }
-  img:nth-child(2) {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 40%;
-  }
+
   @media (max-width: 1320px) {
     justify-content: center;
     div {
